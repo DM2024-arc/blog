@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link th:rel="stylesheet" th:href="@{/assets/css/administration.css}">
+    <title>Page gestion article</title>
+</head>
+<body>
+<div class="container-fluid mt-2">
+
+	<div class="row justify-content-center align-items-center mb-3">
+		<div class="col-12">
+			<a th:href="@{/administration}">
+				<button class="btn btn-primary">Accueil administration</button>
+			</a>
+			
+			<a th:href="@{/creationArticle}">
+				<button class="btn btn-primary">Nouvelle article</button>
+			</a>		
+		</div>
+		
+		
+		<h1 class="text-center mb-4">Gestion des articles</h1>	
+	</div>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Contenu</th>
+				<th>Rédacteur</th>
+				<th>Image</th>
+				<th>Suppression</th>
+				<th>Modifier</th>			
+			</tr>	
+		</thead>
+		
+		<tbody>	
+			<tr th:each="article : ${ListArticle}">
+				<td th:text="${article.titre}"> </td>
+				<td th:text="${article.contenue}"> </td>
+				<td th:text="${article.redacteur}"> </td>
+				<td> <img th:src="@{${'/image/display/'+ article.id}}" class="card img-fluid" style="width:300px" alt=""/> </td>
+				
+				<td>
+					<a th:href="@{/supprimerArticle/{id}(id=${article.id})}">
+						<i class="fas fa-trash-alt"></i>Supprimer				
+					</a>			
+				</td>
+				
+				
+				<td>
+					<a th:href="@{/modificationArticle/{id}(id=${article.id})}">
+						<i class="fas fa-edit"></i>Modifier				
+					</a>			
+				</td>
+				
+			</tr>	
+		</tbody>	
+	</table>	
+</div>
+</body>
+</html>

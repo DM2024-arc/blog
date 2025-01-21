@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link th:rel="stylesheet" th:href="@{/assets/css/administration.css}">
+    <title>Création article</title>
+</head>
+<body>
+	<div class="container-fluid mt-2">
+		
+		<div class="row justify-content-center align-items-center mb-3">
+			<div class="clo-12">
+				<a th:href="@{/administration}">
+					<button class="btn btn-primary">Accueil administration</button>			
+				</a>
+				<a th:href="@{/gestionArticle}">
+					<button class="btn btn-primary">Gestion article</button>			
+				</a>		
+			</div>	
+		</div>
+		
+		<h1 class="text-center mb-4">Création article</h1>
+		
+		<form action="#" th:action="@{/enregistrerArticle}" th:object="${article}" method="post" enctype="multipart/form-data">
+		
+			<div class="form-group row col-6">
+				<label for="titre" class="col-sm-3 col-form-label">Titre</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id=titre name="titre" required="required"/>
+				</div>	
+			</div>
+			
+			<div class="form-group row col-6">
+				<label for="contenu" class="col-sm-3 col-form-label">Contenu</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id=contenu name="contenu"/>
+				</div>	
+			</div>
+			
+			<div class="form-group row col-6">
+				<label for="redacteur" class="col-sm-3 col-form-label">Rédacteur</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id=redacteur name="redacteur"/>
+				</div>	
+			</div>
+			
+			
+			<div class="form-group row col-6">
+				<label for="image" class="col-sm-3 col-form-label">Image</label>
+				<div class="col-sm-9">
+					<input type="file" class="form-control" id=image name="image"/>
+					<p id="error_file"></p>
+				</div>	
+			</div>
+			
+			<div class="form-group row col-6">
+				<div class="col-sm-9 offset-sm-3">
+					<button type="submit" class="btn btn-primary">Enregistrer</button>
+				</div>		
+			</div>
+			
+		</form>
+	</div>
+</body>
+</html>
